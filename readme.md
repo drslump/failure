@@ -23,14 +23,12 @@ approach it becomes much easier to manipulate it.
 For instance we can filter out unwanted frames from it:
 
 ```js
-var MyError = Failure.create('MyError', {
-  buildStackTrace: function () {
-    // Remove frames from a debug library
-    this.frames = this.frames.filter(function (frame) {
-      return !/my-debug-lib.js$/.test(frame.getFileName());
-    });
-    return Failure.prototype.buildStackTrace.call(this);
-  }
+var MyError = Failure.create('MyError', function (frames) {
+  // Remove frames from a debug library
+  frames = frames.filter(function (frame) {
+    return !/my-debug-lib.js$/.test(frame.getFileName());
+  });
+  return Failure.prototype.prepareStackTrace.call(this, frames);
 });
 ```
 
