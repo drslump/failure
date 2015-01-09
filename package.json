@@ -17,9 +17,9 @@
     "error-stack-parser": "^1.0.0"
   },
   "devDependencies": {
+    "mocha": "^2.1.0"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [
     "error",
     "exception",
