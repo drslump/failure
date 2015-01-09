@@ -127,10 +127,10 @@ function doWork() {
   throw new Failure('work failed');
 }
 
-// Wrap in an anonymous function
-Failure.setTimeout(function () { doWork(); }, 10);
 // Use Failure.wrap
-setTimeout(Failure.wrap(doWork), 2000);
+setTimeout(Failure.wrap(doWork), 10);
+// Wrap in an anonymous function
+Failure.setTimeout(function () { doWork(); }, 2000);
 ```
 
 Now if there is a failure in `doWork` it'll correctly report the stack trace:
@@ -138,7 +138,6 @@ Now if there is a failure in `doWork` it'll correctly report the stack trace:
 ```sh
 Failure: work failed
  at doWork (test.js:2:9)
- at null._onTimeout (test.js:6:34)
  ----------------------------------------
  at Object.<anonymous> (test.js:6:9)  <-- NOTE: it rightly points to the origin
 ```
