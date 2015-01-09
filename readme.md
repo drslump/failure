@@ -129,7 +129,8 @@ function doWork() {
 
 // Wrap in an anonymous function
 Failure.setTimeout(function () { doWork(); }, 10);
-Failure.setTimeout(function () { doWork(); }, 2000);
+// Use Failure.wrap
+setTimeout(Failure.wrap(doWork), 2000);
 ```
 
 Now if there is a failure in `doWork` it'll correctly report the stack trace:
@@ -139,7 +140,6 @@ Failure: work failed
  at doWork (test.js:2:9)
  at null._onTimeout (test.js:6:34)
  ----------------------------------------
- at Function.Failure_setTimeout (failure/lib/failure.js:189:26)
  at Object.<anonymous> (test.js:6:9)  <-- NOTE: it rightly points to the origin
 ```
 
@@ -150,14 +150,7 @@ of track.
 
 ```js
 Function.prototype.track = function (wrap) {
-  var fn = this;
-
-  if (!wrap) {
-    return Failure.track(fn);
-  }
-
-  function wrapper () { return fn.apply(this, arguments); }
-  return Failure.track(wrapper);
+  return wrap ? Failure.wrap(this) : Failure.track(this);
 };
 ```
 
