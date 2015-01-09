@@ -1,0 +1,34 @@
+{
+  "name": "Failure",
+  "version": "0.0.1",
+  "description": "Customizable Error replacement",
+  "main": "main.js",
+  "files": [
+    "LICENSE",
+    "main.js",
+    "lib/*",
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:drslump/failure.git"
+  },
+  "dependencies": {
+    "error-stack-parser": "^1.0.0"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  },
+  "keywords": [
+    "error",
+    "exception",
+    "stacktrace"
+  ],
+  "author": "Iván -DrSlump- Montes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drslump/failure/issues"
+  },
+  "homepage": "https://github.com/drslump/failure"
+}
