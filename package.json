@@ -17,9 +17,16 @@
     "error-stack-parser": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "browserify": "^7.0.3 < 8",
+    "mocha": "^2.1.0",
+    "uglify-js": "^2.4.16"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "node_modules/.bin/mocha --recursive test",
+    "build-debug": "browserify main.js --debug --standalone Failure > dist/failure.js",
+    "build-min": "uglifyjs -c -o dist/failure.min.js dist/failure.js",
+    "build": "npm run build-debug && npm run build-min"
+  },
   "keywords": [
     "error",
     "exception",
