@@ -30,7 +30,8 @@ module.exports = function (config) {
       }
     },
 
-    browsers: browsers || ['Chrome', 'Firefox'],
+    // By default let's run on local browsers
+    browsers: browsers || ['Chrome', 'Firefox', 'Safari'],
 
     // My home internet connection is really this bad :(
     browserDisconnectTimeout: 10*1000,
@@ -72,6 +73,13 @@ module.exports = function (config) {
       sl_gc: {
         base: 'SauceLabs',
         browserName: 'chrome',
+        "record-video": false,
+        "record-screenshot": false
+      },
+      sl_safari: {
+        base: 'SauceLabs',
+        browserName: 'safari',
+        platform: 'OS X 10.9',
         "record-video": false,
         "record-screenshot": false
       },
