@@ -64,6 +64,12 @@ module.exports = function (config) {
         "record-video": false,
         "record-screenshot": false
       },
+      sl_edge: {
+        base: 'SauceLabs',
+        browserName: 'microsoftedge',
+        "record-video": false,
+        "record-screenshot": false
+      },
       sl_ff: {
         base: 'SauceLabs',
         browserName: 'firefox',
