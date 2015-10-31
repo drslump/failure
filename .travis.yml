@@ -9,6 +9,7 @@ node_js:
 
 env:
   global:
+    - KARMA_BROWSERS=sl_ie11,sl_ff30,sl_ios
     # SauceLabs credentials
     - secure: fX68jXgbrelO0IGSa4sblu5L0EGoWYu87m/hedeJpK9h1C4Z8gsb2Oyj/gI9TsxjGsX9DwCY4o202KOYniZcCZBThpeIRTl6OMK8cjFl8N1fwdOtj9RyarZk6DgxDG4lnlA8sQY2jQ5gkyDpeMZyZDnK6GMLjilysG7kKuvEB2g=
     - secure: HuX/dpmAS4g3CsgZStjznpK+t0nVNXDrBCgnWHvFiAlLFgB/MPi1Wh2ixlh9MaSSVl9jbQsU3gkV3jYYlAMVwxMcnTfmfE/dq8pOk5y4UYHxHmjvWvINv+5lOj1AXe+nasERfSTHzpdoJnPPkJViJjDqZVHyfshsi4YfDpWhelA=
