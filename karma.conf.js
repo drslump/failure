@@ -30,7 +30,7 @@ module.exports = function (config) {
       }
     },
 
-    browsers: browsers || ['Chrome', 'Firefox', 'sl_ie11', 'sl_ff30', 'sl_ios'],
+    browsers: browsers || ['Chrome', 'Firefox'],
 
     // My home internet connection is really this bad :(
     browserDisconnectTimeout: 10*1000,
@@ -63,10 +63,15 @@ module.exports = function (config) {
         "record-video": false,
         "record-screenshot": false
       },
-      sl_ff30: {
+      sl_ff: {
         base: 'SauceLabs',
         browserName: 'firefox',
-        platform: 'Linux',
+        "record-video": false,
+        "record-screenshot": false
+      },
+      sl_gc: {
+        base: 'SauceLabs',
+        browserName: 'chrome',
         "record-video": false,
         "record-screenshot": false
       },
