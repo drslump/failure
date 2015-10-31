@@ -15,6 +15,27 @@ Customizable Error replacement for JavaScript.
 - Async stack traces (aka *Long stack traces*) support
 
 
+## Supported environments
+
+ - Node.js, Google Chrome 28+ and Opera 15+ are fully supported
+ - Firefox 30+, Safari 7+ and IE 10+ (see known issues) have very good support
+ - Unsupported browsers should just behave as bad as with the normal Error object
+
+There is a growing set of tests run for multiple node.js versions and
+browsers to make sure the library behaves properly.
+
+## Known issues
+
+On all versions of Internet Explorer and any browser that doesn't support
+`Object.defineProperty` the stack is generated when the error object is created
+not only when the `.stack` property is accessed. This can be an issue if your
+code creates a lot of error objects, like for instance a parser that uses
+exception handling for discarding parsing rules.
+
+Many older browsers (ie: Safari 5) doesn't report a `.stack` property so
+there is nothing to be done there.
+
+
 ## Customization
 
 `Failure` instances expose a `.frames` property holding an array of *CallSite*

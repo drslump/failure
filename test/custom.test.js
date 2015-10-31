@@ -71,7 +71,6 @@ describe('custom failure error', function () {
   }
 
   it('should display the offending line', function () {
-    var isIE = 'ActiveXObject' in global;
 
     try {
       coolAssert("foo");
@@ -83,14 +82,10 @@ describe('custom failure error', function () {
       // Preface
       assert.equal(lines[0], 'AssertionError: CoolAssert failure');
 
-      if (isIE) {
-        console.log('offending line extraction is not supported on IE');
-      } else {
-        assert.equal(lines[1], '');
-        // Note diff browsers provide different accuracy so be flexible
-        assert(/\("foo"\)/.test(lines[2]), lines[2]);
-        assert.equal(lines[3], '');
-      }
+      assert.equal(lines[1], '');
+      // Note diff browsers provide different accuracy so be flexible
+      assert(/\("foo"\)/.test(lines[2]), lines[2]);
+      assert.equal(lines[3], '');
 
       // Execution frame
       assert(/^  at /.test(lines[4]), lines[4]);
