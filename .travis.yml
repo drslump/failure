@@ -1,0 +1,24 @@
+language: node_js
+
+# Since we're running the karma tests against saucelabs we need
+# to keep the build matrix under control :)
+node_js:
+  - "4.1"
+  - "0.12"
+  - "0.10"
+
+env:
+  global:
+    # SauceLabs credentials
+    - secure: fX68jXgbrelO0IGSa4sblu5L0EGoWYu87m/hedeJpK9h1C4Z8gsb2Oyj/gI9TsxjGsX9DwCY4o202KOYniZcCZBThpeIRTl6OMK8cjFl8N1fwdOtj9RyarZk6DgxDG4lnlA8sQY2jQ5gkyDpeMZyZDnK6GMLjilysG7kKuvEB2g=
+    - secure: HuX/dpmAS4g3CsgZStjznpK+t0nVNXDrBCgnWHvFiAlLFgB/MPi1Wh2ixlh9MaSSVl9jbQsU3gkV3jYYlAMVwxMcnTfmfE/dq8pOk5y4UYHxHmjvWvINv+5lOj1AXe+nasERfSTHzpdoJnPPkJViJjDqZVHyfshsi4YfDpWhelA=
+
+# Enable container-based builds
+sudo: false
+
+# Enable npm deps caching betweeen builds
+cache:
+  directories:
+    - node_modules
+
+script: npm test && npm karma
