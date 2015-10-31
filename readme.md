@@ -1,5 +1,7 @@
 # Failure
 
+[![Build Status](https://travis-ci.org/drslump/failure.svg)](https://travis-ci.org/drslump/failure)
+
 Customizable Error replacement for JavaScript.
 
 
