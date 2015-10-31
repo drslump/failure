@@ -32,6 +32,12 @@ var MyError = Failure.create('MyError', function (frames) {
 });
 ```
 
+Note that for simple cases we can use the bundled excluding filters like this:
+
+```js
+Failure.exclude(/(node|module)\.js/);
+```
+
 ## Trimmed stack traces
 
 Say you have a cool assertions library but when throwing an error you internal
@@ -86,7 +92,7 @@ The snippet above generates:
 ```sh
 Failure: Async error
  at null._onTimeout (test.js:3:11)
- ----------------------------------------
+ ----
  at doAsync (test.js:2:22)
  at Object.<anonymous> (test.js:7:1)
 ```
@@ -98,16 +104,17 @@ Tracking function execution comes with a performance cost, both in memory and CP
 when the function is annotated the current stack trace information must be
 computed. *Failure* uses a deferred algorithm to make this operation as fast as
 possible but it's still expensive, so avoid using it if you need to register a
-callback very frequently. Note however that the cost is when defining the callback,
-the invokation is unaffected.
+callback very frequently. Note however that **the cost is when defining** the
+callback, invocation is unaffected.
 
 > **Hint**: The whole tracking mechanism can be globally disabled with
-  `Failure.TRACK = false`.
+  `Failure.TRACKING = false`.
 
 > **Caution**: Using the native `.bind` method (on the V8 engine at least)
   creates a new function reference but it gets inlined and isn't available when
   querying the call stack. The result is that it's not possible to track those
   function calls, see the next section for a work around.
+
 
 ### Tracking multiple calls
 
@@ -136,9 +143,10 @@ Now if there is a failure in `doWork` it'll correctly report the stack trace:
 ```sh
 Failure: work failed
  at doWork (test.js:2:9)
- ----------------------------------------
+ ----
  at Object.<anonymous> (test.js:6:9)  <-- NOTE: it rightly points to the origin
 ```
+
 
 ### Bonus: include .track in the Function prototype
 

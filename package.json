@@ -1,6 +1,6 @@
 {
   "name": "failure",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Customizable Error replacement",
   "main": "main.js",
   "files": [
@@ -17,12 +17,21 @@
     "error-stack-parser": "^1.0.0"
   },
   "devDependencies": {
-    "browserify": "^7.0.3 < 8",
+    "browserify": "^12.0.1",
+    "karma": "^0.13.14",
+    "karma-browserify": "^4.4.0",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-cli": "^0.1.1",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-mocha": "^0.2.0",
+    "karma-sauce-launcher": "^0.3.0",
+    "karma-source-map-support": "^1.1.0",
     "mocha": "^2.1.0",
     "uglify-js": "^2.4.16"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --recursive test",
+    "karma": "node_modules/.bin/karma start karma.conf.js",
     "build-debug": "browserify main.js --debug --standalone Failure > dist/failure.js",
     "build-min": "uglifyjs -c -o dist/failure.min.js dist/failure.js",
     "build": "npm run build-debug && npm run build-min"
